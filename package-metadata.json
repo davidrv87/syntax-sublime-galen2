@@ -1,0 +1,8 @@
+{
+	"description": "Sublime Text 2/3 syntax highlighting for the Galen Framework version 2+", 
+	"url": "https://github.com/davidrv87/syntax-sublime-galen2", 
+	"platforms": ["*"], 
+	"version": "1.0.0", 
+	"sublime_text": "*", 
+	"dependencies": []
+}

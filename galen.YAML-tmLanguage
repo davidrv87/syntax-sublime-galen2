@@ -1,0 +1,118 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+name: Galen v2
+scopeName: text.galen
+fileTypes: [gspec]
+uuid: a41f12d9-d823-4cb7-9869-508f9a191632
+
+patterns:
+- include: '#core'
+
+repository:
+  core:
+    patterns:
+    - include: '#objects'
+    - include: '#groups'
+    - include: '#punctuation'
+    - include: '#comments'
+    - include: '#section'
+    - include: '#keyword'
+    - include: '#group'
+    - include: '#rule'
+    - include: '#variable'
+    - include: '#specs'
+    - include: '#test'
+    - include: '#objects'
+
+  objects:
+    patterns:
+    - begin: (@objects)
+      beginCaptures:
+        '1': {name: keyword.operator.galen}
+      end: (@|=.*=)
+      endCaptures:
+        '1': {name: keyword.operator.galen}
+      patterns:
+      - match: (\s*\S*)(\s*.*)\n$
+        captures:
+          '1': {name: variable.parameter.galen}
+          '2': {name: string.quoted.triple}
+
+  groups:
+    patterns:
+    - begin: (groups)\n$
+      beginCaptures:
+        '1': {name: keyword.operator.galen}
+      end: (=.*=)
+      endCaptures:
+        '1': {name: support.function.galen}
+      patterns:
+      - match: (\s*\S*)(\s*.*)\n$
+        captures:
+          '1': {name: constant.language.galen}
+          '2': {name: variable.parameter.galen}
+
+  punctuation:
+    patterns:
+    - name: storage.type.galen
+      match: \|
+    - name: entity.name.function.galen
+      match: (\[|\])
+
+  comments:
+    patterns:
+    - name: comment.line.number-sign.galen
+      match: ^\s*#.*
+
+  section:
+    patterns:
+    - name: support.function.galen
+      match: ^\s*=\s[A-Za-z ]*\s=$
+
+  keyword:
+    patterns:
+    - name: keyword.operator.galen
+      match: ^\s*(@import|@on|@script)\s(.*)
+      captures:
+        '1': {name: keyword.operator.galen}
+        '2': {name: entity.name.function.galen}
+
+    - name: keyword.operator.galen
+      match: (@objects|@groups|@forEach|@for|@if|@elseif|@else|(next)?\sas\s)
+
+  group:
+    patterns:
+    - name: constant.language.galen
+      match: \s*&[-A-Za-z_]*
+
+  rule:
+    patterns:
+    - name: entity.name.function.galen
+      match: ^\s*@rule.*
+
+  variable:
+    patterns:
+    - name: variable.parameter.galen
+      match: (\$|\%)\{[-A-Za-z_]*\}
+
+  test:
+    patterns:
+    - match: \s*([-A-Za-z_\.]*)(:)
+      captures:
+        '1': {name: variable.parameter.galen}
+        '2': {name: entity.name.function.galen}
+
+  specs:
+    patterns:
+    - name: string.quoted.triple
+      captures:
+        '1': {name: string.quoted.triple}
+      match: (near|below|above|left-of|right-of|
+              (contains|inside)( partly)?|on (top|bottom) (left|right)|
+              width\s|height\s|
+              text (is|contains|starts|ends|matches)|
+              aligned (vertically|horizontally) (all|top|right|left|bottom)?|
+              css .* (is|starts|ends|contains|matches)|
+              absent| visible|
+              centered (horizontally|vertically|all) (inside|on)|
+              component|color scheme|
+              )
