@@ -4,6 +4,11 @@ Syntax highlighting for [Galen Framework version 2+][galen].
 
 ## Installation
 
+### Installation via Package Control
+
+1. Add the [repository][repository] to the Package Control using `Package Control: Add Repository`.
+2. Search for *Galen v2* in `Package Control: Install Package`.
+
 ### Manual installation
 
 1. Download the [zip archive][zip].
@@ -30,5 +35,6 @@ You can set `Galen v2` syntax hightlighting for all `.gspec` files by going to `
 Code copyright 2016. Code released under [the MIT License][license].
 
 [galen]: http://galenframework.com
+[repository]: https://github.com/davidrv87/syntax-sublime-galen2
 [zip]: https://github.com/davidrv87/syntax-sublime-galen2/archive/master.zip
-[license]: https://github.com/davidrv87/syntax-sublime-galen2/LICENSE.txt
+[license]: https://github.com/davidrv87/syntax-sublime-galen2/blob/master/LICENSE.txt

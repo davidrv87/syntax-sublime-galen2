@@ -1,0 +1,14 @@
+{
+	"name": "Galen v2",
+	"description": "Sublime Text 2/3 syntax highlighting for the Galen Framework version 2+", 
+	"details": "https://github.com/davidrv87/syntax-sublime-galen2",
+	"homepage": "https://github.com/davidrv87/syntax-sublime-galen2",
+	"readme": "https://github.com/davidrv87/syntax-sublime-galen2/blob/master/README.md",
+	"author": "davidrv87",
+	"releases": [
+		{
+			"sublime_text": "*",
+			"tags": true
+		}
+	]
+}
