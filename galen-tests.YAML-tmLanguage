@@ -13,6 +13,7 @@ repository:
     - include: '#table'
     - include: '#variable'
     - include: '#keyword'
+    - include: '#comments'
 
   rule:
     patterns:
@@ -42,6 +43,7 @@ repository:
         - include: '#table'
         - include: '#variable'
         - include: '#keyword'
+        - include: '#comments'
         - begin: (?i)(disabled)
           beginCaptures:
             '1': {name: support.function.galen-t}
@@ -69,4 +71,8 @@ repository:
   keyword:
     patterns:
     - name: keyword.operator.galen-t
-      match: ^\s*(?i)(wait|inject|check|selenium|jsfactory|open|resize|cookie|run|properties|)
+      match: ^\s*(?i)(wait|inject|check|selenium|jsfactory|open|resize|cookie|run|properties|dump)
+  comments:
+    patterns:
+    - name: comment.line.number-sign-t
+      match: ^\s*(#).*
