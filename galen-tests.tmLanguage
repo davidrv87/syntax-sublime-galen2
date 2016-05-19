@@ -18,6 +18,18 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>comments</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>^\s*(#).*</string>
+					<key>name</key>
+					<string>comment.line.number-sign-t</string>
+				</dict>
+			</array>
+		</dict>
 		<key>core</key>
 		<dict>
 			<key>patterns</key>
@@ -38,6 +50,10 @@
 					<key>include</key>
 					<string>#keyword</string>
 				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
 			</array>
 		</dict>
 		<key>keyword</key>
@@ -46,7 +62,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>^\s*(?i)(wait|inject|check|selenium|jsfactory|open|resize|cookie|run|properties|)</string>
+					<string>^\s*(?i)(wait|inject|check|selenium|jsfactory|open|resize|cookie|run|properties|dump)</string>
 					<key>name</key>
 					<string>keyword.operator.galen-t</string>
 				</dict>
@@ -152,6 +168,10 @@
 						<dict>
 							<key>include</key>
 							<string>#keyword</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
 						</dict>
 						<dict>
 							<key>begin</key>
