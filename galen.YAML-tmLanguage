@@ -113,3 +113,6 @@ repository:
       end: (is|starts|ends|contains|matches)
       endCaptures:
         '1': {name: string.quoted.triple}
+    - name: support.function.galen
+      begin: (^\s*")
+      end: (")
