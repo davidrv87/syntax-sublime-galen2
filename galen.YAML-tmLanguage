@@ -82,7 +82,7 @@ repository:
   group:
     patterns:
     - name: constant.language.galen
-      match: \s*&[-A-Za-z_]*
+      match: \s*&[-A-Za-z_0-9]*
 
   rule:
     patterns:
@@ -96,7 +96,7 @@ repository:
 
   test:
     patterns:
-    - match: \s*([-A-Za-z_\.]*)(:)
+    - match: \s*([-A-Za-z_\., 0-9\*]*)(:)
       captures:
         '1': {name: variable.parameter.galen}
         '2': {name: entity.name.function.galen}
@@ -106,13 +106,13 @@ repository:
     - name: string.quoted.triple
       captures:
         '1': {name: string.quoted.triple}
-      match: (near|below|above|left-of|right-of|
-              (contains|inside)( partly)?|on (top|bottom) (left|right)|
-              width\s|height\s|
-              text (is|contains|starts|ends|matches)|
-              aligned (vertically|horizontally) (all|top|right|left|bottom)?|
-              css .* (is|starts|ends|contains|matches)|
-              absent| visible|
-              centered (horizontally|vertically|all) (inside|on)|
-              component|color scheme|
-              )
+      match: (near|below|above|left-of|right-of|(contains|inside)( partly)?|on (top|bottom) (left|right)|^\s*(width) |^\s*(height) |text (is|contains|starts|ends|matches)|aligned (vertically|horizontally) (all|top|right|left|bottom)?|absent|visible|centered (horizontally|vertically|all) (inside|on)|component|color scheme)
+    - begin: (css)
+      beginCaptures:
+        '1': {name: string.quoted.triple}
+      end: (is|starts|ends|contains|matches)
+      endCaptures:
+        '1': {name: string.quoted.triple}
+    - name: support.function.galen
+      begin: (^\s*")
+      end: (")
