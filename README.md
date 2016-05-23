@@ -1,4 +1,4 @@
-# Syntax Highligher for Galen Framework v2+
+# Syntax Highlighter for Galen Framework v2+
 
 Syntax highlighting for [Galen Framework version 2+][galen].
 
