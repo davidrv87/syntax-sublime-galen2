@@ -1,0 +1,78 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+name: Galen v2 test
+scopeName: text.galen-t
+fileTypes: [gtest,test]
+
+patterns:
+- include: '#core'
+
+repository:
+  core:
+    patterns:
+    - include: '#rule'
+    - include: '#table'
+    - include: '#variable'
+    - include: '#keyword'
+    - include: '#comments'
+
+  rule:
+    patterns:
+    - begin: (@@)
+      beginCaptures:
+        '1': {name: keyword.operator.galen-t}
+      end: (?=(@))
+      patterns:
+        - begin: (?i)(set)(\s*\S*)(\s*.*)
+          beginCaptures:
+            '1': {name: support.function.galen-t}
+            '2': {name: entity.name.function.galen-t}
+            '3': {name: string.quoted.triple}
+          end: ^(?=(@|\$|\S))
+          patterns:
+            - begin: ^(?=(\s+*))(\s*\S*)(\s*.*)
+              beginCaptures:
+                '2': {name: entity.name.function.galen-t}
+                '3': {name: string.quoted.triple}
+              end: ($)
+        - begin: (?i)(parameterized using|groups|table)(\s*\S*)(\s*.*)
+          beginCaptures:
+            '1': {name: support.function.galen-t}
+            '2': {name: entity.name.function.galen-t}
+            '3': {name: string.quoted.triple}
+          end: ($)
+        - include: '#table'
+        - include: '#variable'
+        - include: '#keyword'
+        - include: '#comments'
+        - begin: (?i)(disabled)
+          beginCaptures:
+            '1': {name: support.function.galen-t}
+          end: ^\s*$
+          patterns:
+            - name: comment.line.number-sign.galen-t
+              match: .*
+
+
+  table:
+    patterns:
+    - begin: (\|)
+      beginCaptures:
+        '1': {name: support.function.galen-t}
+      end: (\|)$
+      endCaptures:
+        '1': {name: support.function.galen-t}
+      patterns:
+      - match: (\|)
+        name: support.function.galen-t
+  variable:
+    patterns:
+    - name: variable.parameter.galen-t
+      match: (\$|\%)\{[-A-Za-z_]*\}
+  keyword:
+    patterns:
+    - name: keyword.operator.galen-t
+      match: ^\s*(?i)(wait|inject|check|selenium|jsfactory|open|resize|cookie|run|properties|dump)
+  comments:
+    patterns:
+    - name: comment.line.number-sign-t
+      match: ^\s*(#).*
