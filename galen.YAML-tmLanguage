@@ -32,6 +32,7 @@ repository:
       endCaptures:
         '1': {name: keyword.operator.galen}
       patterns:
+      - include: '#comments'
       - match: (\s*\S*)(\s*.*)\n$
         captures:
           '1': {name: variable.parameter.galen}
@@ -46,6 +47,7 @@ repository:
       endCaptures:
         '1': {name: support.function.galen}
       patterns:
+      - include: '#comments'
       - match: (\s*\S*)(\s*.*)\n$
         captures:
           '1': {name: constant.language.galen}
