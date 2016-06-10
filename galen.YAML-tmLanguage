@@ -25,13 +25,12 @@ repository:
 
   objects:
     patterns:
-    - begin: (@objects)
+    - begin: (@objects)\s*$
       beginCaptures:
         '1': {name: keyword.operator.galen}
-      end: (@|=.*=)
-      endCaptures:
-        '1': {name: keyword.operator.galen}
+      end: (?=(@|=))
       patterns:
+      - include: '#comments'
       - match: (\s*\S*)(\s*.*)\n$
         captures:
           '1': {name: variable.parameter.galen}
@@ -39,13 +38,12 @@ repository:
 
   groups:
     patterns:
-    - begin: (groups)\n$
+    - begin: (@groups)\s*$
       beginCaptures:
         '1': {name: keyword.operator.galen}
-      end: (=.*=)
-      endCaptures:
-        '1': {name: support.function.galen}
+      end: (?=(@|=))
       patterns:
+      - include: '#comments'
       - match: (\s*\S*)(\s*.*)\n$
         captures:
           '1': {name: constant.language.galen}
@@ -61,12 +59,12 @@ repository:
   comments:
     patterns:
     - name: comment.line.number-sign.galen
-      match: ^\s*#.*
+      match: ^\s*#.*$
 
   section:
     patterns:
     - name: support.function.galen
-      match: ^\s*=\s.*\s=$
+      match: ^\s*(=)\s(.*)\s(=)\s*$
 
   keyword:
     patterns:
@@ -96,7 +94,7 @@ repository:
 
   test:
     patterns:
-    - match: \s*([-A-Za-z_\., 0-9\*]*)(:)\n
+    - match: \s*([-A-Za-z_\., 0-9\*]*)(:)
       captures:
         '1': {name: variable.parameter.galen}
         '2': {name: entity.name.function.galen}
@@ -104,9 +102,7 @@ repository:
   specs:
     patterns:
     - name: string.quoted.triple
-      captures:
-        '1': {name: string.quoted.triple}
-      match: (near|below|above|left-of|right-of|(contains|inside)( partly)?|on (top|bottom) (left|right)|^\s*(width) |^\s*(height) |text (is|contains|starts|ends|matches)|aligned (vertically|horizontally) (all|top|right|left|bottom)?|absent|visible|centered (horizontally|vertically|all) (inside|on)|component |color scheme)
+      match: (near|below|above|left-of|right-of|(contains|inside)( partly)?|on (top|bottom) (left|right)|^\s*(width) |^\s*(height) |text (is|contains|starts|ends|matches)|aligned (vertically|horizontally) (all|top|right|left|bottom)?|absent|visible|centered (horizontally|vertically|all) (inside|on)|component|color scheme)
     - begin: (css)
       beginCaptures:
         '1': {name: string.quoted.triple}
