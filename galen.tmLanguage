@@ -123,6 +123,10 @@
 					<key>patterns</key>
 					<array>
 						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+						<dict>
 							<key>captures</key>
 							<dict>
 								<key>1</key>
@@ -193,6 +197,10 @@
 					<string>(?=(@|=))</string>
 					<key>patterns</key>
 					<array>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
 						<dict>
 							<key>captures</key>
 							<dict>
