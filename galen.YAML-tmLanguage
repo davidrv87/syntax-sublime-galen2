@@ -28,9 +28,7 @@ repository:
     - begin: (@objects)
       beginCaptures:
         '1': {name: keyword.operator.galen}
-      end: (@|=.*=)
-      endCaptures:
-        '1': {name: keyword.operator.galen}
+      end: (?=(@|=))
       patterns:
       - match: (\s*\S*)(\s*.*)\n$
         captures:
@@ -39,10 +37,10 @@ repository:
 
   groups:
     patterns:
-    - begin: (groups)\n$
+    - begin: (@groups)\n$
       beginCaptures:
         '1': {name: keyword.operator.galen}
-      end: (=.*=)
+      end: (?=(@|=))
       endCaptures:
         '1': {name: support.function.galen}
       patterns:

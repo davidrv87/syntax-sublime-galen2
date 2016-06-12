@@ -101,7 +101,7 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>(groups)\n$</string>
+					<string>(@groups)\n$</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -111,7 +111,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(=.*=)</string>
+					<string>(?=(@|=))</string>
 					<key>endCaptures</key>
 					<dict>
 						<key>1</key>
@@ -190,15 +190,7 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(@|=.*=)</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.operator.galen</string>
-						</dict>
-					</dict>
+					<string>(?=(@|=))</string>
 					<key>patterns</key>
 					<array>
 						<dict>
