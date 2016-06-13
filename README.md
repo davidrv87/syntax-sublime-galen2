@@ -6,9 +6,8 @@ Syntax highlighting for [Galen Framework version 2+][galen].
 
 ### Installation via Package Control
 
-1. Add the [repository][repository] to the Package Control using `Package Control: Add Repository`.
-2. Search for *syntax-sublime-galen2* in `Package Control: Install Package`.
-3. Install the package.
+1. Search for *Galen v2+* in `Package Control: Install Package`.
+2. Install the package.
 
 ### Manual installation
 
