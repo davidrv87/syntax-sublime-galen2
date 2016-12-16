@@ -172,7 +172,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(@objects|@groups|@forEach|@for|@if|@elseif|@else|(next)?\sas\s)</string>
+					<string>(@objects|@groups|@forEach|@for|@if|@elseif|@else|@die|(next)?\sas\s)</string>
 					<key>name</key>
 					<string>keyword.operator.galen</string>
 				</dict>
