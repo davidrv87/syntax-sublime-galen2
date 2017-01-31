@@ -11,6 +11,7 @@ repository:
   core:
     patterns:
     - include: '#objects'
+    - include: '#set'
     - include: '#groups'
     - include: '#punctuation'
     - include: '#comments'
@@ -26,6 +27,19 @@ repository:
   objects:
     patterns:
     - begin: (@objects)
+      beginCaptures:
+        '1': {name: keyword.operator.galen}
+      end: (?=(@|=))
+      patterns:
+      - include: '#comments'
+      - match: (\s*\S*)(\s*.*)\n$
+        captures:
+          '1': {name: variable.parameter.galen}
+          '2': {name: string.quoted.triple}
+
+  set:
+    patterns:
+    - begin: (@set)
       beginCaptures:
         '1': {name: keyword.operator.galen}
       end: (?=(@|=))

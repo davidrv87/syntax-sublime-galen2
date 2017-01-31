@@ -39,6 +39,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#set</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#groups</string>
 				</dict>
 				<dict>
@@ -261,6 +265,50 @@
 					<string>^\s*=\s.*\s=$</string>
 					<key>name</key>
 					<string>support.function.galen</string>
+				</dict>
+			</array>
+		</dict>
+		<key>set</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(@set)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.galen</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>(?=(@|=))</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+						<dict>
+							<key>captures</key>
+							<dict>
+								<key>1</key>
+								<dict>
+									<key>name</key>
+									<string>variable.parameter.galen</string>
+								</dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>string.quoted.triple</string>
+								</dict>
+							</dict>
+							<key>match</key>
+							<string>(\s*\S*)(\s*.*)\n$</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
